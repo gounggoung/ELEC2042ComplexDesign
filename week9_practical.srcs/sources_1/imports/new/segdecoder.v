@@ -32,7 +32,7 @@ module segdecoder(
     wire [6:0] out
     );
 
-    assign out = (b == 0 ? 7'b01 :
+     assign out = (b == 0 ? 7'b01 :
                  b == 1 ? 7'h4F :
                  b == 2 ? 7'h12 :
                  b == 3 ? 7'h06 :
@@ -48,6 +48,14 @@ module segdecoder(
                  b == 13 ? 7'h42 :
                  b == 14 ? 7'h10 :
                  b == 15 ? 7'h38 :
+                 // letters for display
+                 b == 16 ? 7'h42 : // d
+                 b == 17 ? 7'h30 : // E
+                 b == 18 ? 7'h41 : // U 
+                 b == 19 ? 7'h08 : // A
+                 b == 20 ? 7'h18 : // P
+                 b == 21 ? 7'h24 : // S
+                 b == 22 ? 7'h6A : // n (use twice for m)
                  7'h00);
                  
      assign SEGDA = out[6];
