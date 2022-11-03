@@ -21,8 +21,7 @@
 
 
 module match(
-    input btnL,
-    input btnR,
+    input [1:0] winner,
     input clk,
     input reset,
     output reg [1:0] out
@@ -96,109 +95,109 @@ module match(
     
               reg [7:0] presentState, nextState;
               
-              always @(presentState, clk, btnL, btnR)
+              always @(presentState, clk, winner)
               begin
                     out = 0;
                     case(presentState)
-                        A0: if(btnR) nextState = A1;
-                            else if (btnL) nextState = B0;
-                        A1: if(btnR) nextState = A2;
-                            else if (btnL) nextState = B1;
-                        A2: if(btnR) nextState = A3;
-                            else if (btnL) nextState = B2;
-                        A3: if(btnR) nextState = A4;
-                            else if (btnL) nextState = B3;
-                        A4: if(btnR) nextState = A5;
-                            else if (btnL) nextState = B4;
-                        A5: if(btnR) nextState = A6;
-                            else if (btnL) nextState = B5;
+                        A0: if(winner == 2) nextState = A1;
+                            else if (winner == 1) nextState = B0;
+                        A1: if(winner == 2) nextState = A2;
+                            else if (winner == 1) nextState = B1;
+                        A2: if(winner == 2) nextState = A3;
+                            else if (winner == 1) nextState = B2;
+                        A3: if(winner == 2) nextState = A4;
+                            else if (winner == 1) nextState = B3;
+                        A4: if(winner == 2) nextState = A5;
+                            else if (winner == 1) nextState = B4;
+                        A5: if(winner == 2) nextState = A6;
+                            else if (winner == 1) nextState = B5;
                         A6:
                             begin
                                 out = 2;
                                 nextState = A0;
                             end     
-                        B0: if(btnR) nextState = B1;
-                            else if (btnL) nextState = C0;
-                        B1: if(btnR) nextState = B2;
-                            else if (btnL) nextState = C1;
-                        B2: if(btnR) nextState = B3;
-                            else if (btnL) nextState = C2;
-                        B3: if(btnR) nextState = B4;
-                            else if (btnL) nextState = C3;
-                        B4: if(btnR) nextState = B5;
-                            else if (btnL) nextState = C4;
-                        B5: if(btnR) nextState = B6;
-                            else if (btnL) nextState = C5;
+                        B0: if(winner == 2) nextState = B1;
+                            else if (winner == 1) nextState = C0;
+                        B1: if(winner == 2) nextState = B2;
+                            else if (winner == 1) nextState = C1;
+                        B2: if(winner == 2) nextState = B3;
+                            else if (winner == 1) nextState = C2;
+                        B3: if(winner == 2) nextState = B4;
+                            else if (winner == 1) nextState = C3;
+                        B4: if(winner == 2) nextState = B5;
+                            else if (winner == 1) nextState = C4;
+                        B5: if(winner == 2) nextState = B6;
+                            else if (winner == 1) nextState = C5;
                         B6:
                             begin
                                 out = 2;
                                 nextState = A0;
                             end 
-                        C0: if(btnR) nextState = C1;
-                            else if (btnL) nextState = D0;
-                        C1: if(btnR) nextState = C2;
-                            else if (btnL) nextState = D1;
-                        C2: if(btnR) nextState = C3;
-                            else if (btnL) nextState = D2;
-                        C3: if(btnR) nextState = C4;
-                            else if (btnL) nextState = D3;
-                        C4: if(btnR) nextState = C5;
-                            else if (btnL) nextState = D4;
-                        C5: if(btnR) nextState = C6;
-                            else if (btnL) nextState = D5;
+                        C0: if(winner == 2) nextState = C1;
+                            else if (winner == 1) nextState = D0;
+                        C1: if(winner == 2) nextState = C2;
+                            else if (winner == 1) nextState = D1;
+                        C2: if(winner == 2) nextState = C3;
+                            else if (winner == 1) nextState = D2;
+                        C3: if(winner == 2) nextState = C4;
+                            else if (winner == 1) nextState = D3;
+                        C4: if(winner == 2) nextState = C5;
+                            else if (winner == 1) nextState = D4;
+                        C5: if(winner == 2) nextState = C6;
+                            else if (winner == 1) nextState = D5;
                         C6:
                             begin
                                 out = 2;
                                 nextState = A0;
                             end 
-                        D0: if(btnR) nextState = D1;
-                            else if (btnL) nextState = E0;
-                        D1: if(btnR) nextState = D2;
-                            else if (btnL) nextState = E1;
-                        D2: if(btnR) nextState = D3;
-                            else if (btnL) nextState = E2;
-                        D3: if(btnR) nextState = D4;
-                            else if (btnL) nextState = E3;
-                        D4: if(btnR) nextState = D5;
-                            else if (btnL) nextState = E4;
-                        D5: if(btnR) nextState = D6;
-                            else if (btnL) nextState = E5;
+                        D0: if(winner == 2) nextState = D1;
+                            else if (winner == 1) nextState = E0;
+                        D1: if(winner == 2) nextState = D2;
+                            else if (winner == 1) nextState = E1;
+                        D2: if(winner == 2) nextState = D3;
+                            else if (winner == 1) nextState = E2;
+                        D3: if(winner == 2) nextState = D4;
+                            else if (winner == 1) nextState = E3;
+                        D4: if(winner == 2) nextState = D5;
+                            else if (winner == 1) nextState = E4;
+                        D5: if(winner == 2) nextState = D6;
+                            else if (winner == 1) nextState = E5;
                         D6:
                             begin
                                 out = 2;
                                 nextState = A0;
                             end 
-                        E0: if(btnR) nextState = E1;
-                            else if (btnL) nextState = F0;
-                        E1: if(btnR) nextState = E2;
-                            else if (btnL) nextState = F1;
-                        E2: if(btnR) nextState = E3;
-                            else if (btnL) nextState = F2;
-                        E3: if(btnR) nextState = E4;
-                            else if (btnL) nextState = F3;
-                        E4: if(btnR) nextState = E5;
-                            else if (btnL) nextState = F4;
-                        E5: if(btnR) nextState = E6;
-                            else if (btnL) nextState = F5;
+                        E0: if(winner == 2) nextState = E1;
+                            else if (winner == 1) nextState = F0;
+                        E1: if(winner == 2) nextState = E2;
+                            else if (winner == 1) nextState = F1;
+                        E2: if(winner == 2) nextState = E3;
+                            else if (winner == 1) nextState = F2;
+                        E3: if(winner == 2) nextState = E4;
+                            else if (winner == 1) nextState = F3;
+                        E4: if(winner == 2) nextState = E5;
+                            else if (winner == 1) nextState = F4;
+                        E5: if(winner == 2) nextState = E6;
+                            else if (winner == 1) nextState = F5;
                         E6:
                             begin
                                 out = 2;
                                 nextState = A0;
                             end       
-                        F0: if(btnR) nextState = F1;
-                            else if (btnL) nextState = G0;
-                        F1: if(btnR) nextState = F2;
-                            else if (btnL) nextState = G1;
-                        F2: if(btnR) nextState = F3;
-                            else if (btnL) nextState = G2;
-                        F3: if(btnR) nextState = F4;
-                            else if (btnL) nextState = G3;
-                        F4: if(btnR) nextState = F5;
-                            else if (btnL) nextState = G4;
-                        F5: if(btnR) nextState = F6;
-                            else if (btnL) nextState = G5;   
-                        F6: if(btnR) nextState = F7;
-                            else if (btnL) nextState = G6;
+                        F0: if(winner == 2) nextState = F1;
+                            else if (winner == 1) nextState = G0;
+                        F1: if(winner == 2) nextState = F2;
+                            else if (winner == 1) nextState = G1;
+                        F2: if(winner == 2) nextState = F3;
+                            else if (winner == 1) nextState = G2;
+                        F3: if(winner == 2) nextState = F4;
+                            else if (winner == 1) nextState = G3;
+                        F4: if(winner == 2) nextState = F5;
+                            else if (winner == 1) nextState = G4;
+                        F5: if(winner == 2) nextState = F6;
+                            else if (winner == 1) nextState = G5;   
+                        F6: if(winner == 2) nextState = F7;
+                            else if (winner == 1) nextState = G6;
                         F7: 
                             begin
                                 out = 1;
@@ -229,12 +228,12 @@ module match(
                                 out = 1;
                                 nextState = A0;
                             end 
-                        G5: if(btnR) nextState = G6;
-                            else if (btnL) nextState = H5;
-                        G6: if(btnR) nextState = G7;
-                            else if (btnL) nextState = H6; 
-                        G7: if(btnR) nextState = G8;
-                            else if (btnL) nextState = H7;
+                        G5: if(winner == 2) nextState = G6;
+                            else if (winner == 1) nextState = H5;
+                        G6: if(winner == 2) nextState = G7;
+                            else if (winner == 1) nextState = H6; 
+                        G7: if(winner == 2) nextState = G8;
+                            else if (winner == 1) nextState = H7;
                         G8: 
                             begin
                                 out = 2;
@@ -245,12 +244,12 @@ module match(
                                 out = 1;
                                 nextState = A0;
                             end 
-                        H6: if(btnR) nextState = H7;
-                            else if (btnL) nextState = I6; 
-                        H7: if(btnR) nextState = H8;
-                            else if (btnL) nextState = I7; 
-                        H8: if(btnR) nextState = H9;
-                            else if (btnL) nextState = I8;
+                        H6: if(winner == 2) nextState = H7;
+                            else if (winner == 1) nextState = I6; 
+                        H7: if(winner == 2) nextState = H8;
+                            else if (winner == 1) nextState = I7; 
+                        H8: if(winner == 2) nextState = H9;
+                            else if (winner == 1) nextState = I8;
                         H9: 
                             begin
                                 out = 2;
@@ -261,10 +260,10 @@ module match(
                                 out = 1;
                                 nextState = A0;
                             end        
-                        I7: if(btnR) nextState = I8;
-                            else if (btnL) nextState = J7; 
-                        I8: if(btnR) nextState = I9;
-                            else if (btnL) nextState = J8;
+                        I7: if(winner == 2) nextState = I8;
+                            else if (winner == 1) nextState = J7; 
+                        I8: if(winner == 2) nextState = I9;
+                            else if (winner == 1) nextState = J8;
                         I9:
                             begin
                                 out = 2;

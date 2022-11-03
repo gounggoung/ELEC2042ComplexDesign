@@ -21,8 +21,7 @@
 
 
 module match(
-    input btnL,
-    input btnR,
+    input [1:0] winner,
     input clk,
     input reset,
     output reg [1:0] out
@@ -41,23 +40,23 @@ module match(
               
      reg [3:0] presentState, nextState;
      
-     always @(presentState, clk, btnL, btnR)
+     always @(presentState, clk, winner)
      begin
             out = 0;
             case(presentState)
-                A0: if(btnR) nextState = A1;
-                    else if (btnL) nextState = B0;
-                A1: if(btnR) nextState = A2;
-                    else if (btnL) nextState = B1;
+                A0: if(winner == 2) nextState = A1;
+                    else if (winner == 1) nextState = B0;
+                A1: if(winner == 2) nextState = A2;
+                    else if (winner == 1) nextState = B1;
                 A2: 
                     begin
                         out = 2;
                         nextState = A0;
                     end
-                B0: if(btnR) nextState = B1;
-                    else if (btnL) nextState = C0;
-                B1: if(btnR) nextState = B2;
-                    else if (btnL) nextState = C1;
+                B0: if(winner == 2) nextState = B1;
+                    else if (winner == 1) nextState = C0;
+                B1: if(winner == 2) nextState = B2;
+                    else if (winner == 1) nextState = C1;
                 B2: 
                     begin
                         out = 2;
