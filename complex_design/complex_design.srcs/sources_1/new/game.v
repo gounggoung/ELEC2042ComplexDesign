@@ -56,9 +56,12 @@ module game(
               E3 = 6'b100011,
               F3 = 6'b101011;   
               
-              reg [5:0] presentState, nextState;
+              reg [5:0] presentState;
+              reg [5:0] nextState;
               
-              always @(presentState, clk, btnL, btnR)
+              
+              
+              always @(presentState, btnL, btnR, posedge clk)
               begin
                    out = 0;
                    case(presentState)
@@ -138,10 +141,14 @@ module game(
                                 out = 1;
                                 nextState = A0;
                             end
+                        default:
+                            nextState = A0;
                     endcase
+                    
               end
               
               always @(posedge clk, negedge reset)
                     if(!reset) presentState = A0;
                     else presentState = nextState;
+                    
 endmodule

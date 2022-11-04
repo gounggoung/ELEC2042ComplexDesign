@@ -72,6 +72,8 @@ module match(
                         out = 1;
                         nextState = A0;
                     end
+                default:
+                    nextState = A0;
             endcase
      end
      

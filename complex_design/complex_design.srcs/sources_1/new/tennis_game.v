@@ -44,9 +44,9 @@ module tennis_game(
     prescaler100 pre100(clk, nreset, clk100);
     
     
-    game(btnL, btnR, clk, reset, gameWinner);
-    set(gameWinner, clk, reset, setWinner);
-    match(setWinner, clk, reset, matchWinner);
+    game ga(btnL, btnR, clk, reset, gameWinner);
+    set se(gameWinner, clk, reset, setWinner);
+    match ma(setWinner, clk, reset, matchWinner);
     
     
     

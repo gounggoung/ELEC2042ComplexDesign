@@ -1,0 +1,13 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  \
+"../../../../complex_design.srcs/sources_1/new/game.v" \
+"../../../../complex_design.srcs/sources_1/new/match.v" \
+"../../../../complex_design.srcs/sources_1/imports/sources_1/imports/prac8files/prescaler100.v" \
+"../../../../complex_design.srcs/sources_1/new/set.v" \
+"../../../../complex_design.srcs/sources_1/new/tennis_game.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

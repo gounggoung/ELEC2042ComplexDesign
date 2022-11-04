@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module match(
+module set(
     input [1:0] winner,
     input clk,
     input reset,
@@ -279,7 +279,11 @@ module match(
                                 out = 1;
                                 nextState = A0;
                             end 
+                        default:
+                            nextState = A0;    
+                        
                     endcase
+                   
               end
               
               always @(posedge clk, negedge reset)
